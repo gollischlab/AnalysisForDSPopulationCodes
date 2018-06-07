@@ -1,4 +1,4 @@
-function [freqBins, totalInfo, infoDensity, stimDensity, reconstrDensity, errorDensity] = calcMutualInformation(stimFrames, reconstrFrames, filterLen, tbin)
+function [totalInfo, freqBins, infoDensity, stimDensity, reconstrDensity, errorDensity] = calcMutualInformation(stimFrames, reconstrFrames, filterLen, tbin)
 % calcMutualInformation - calculate mutual information between stimulus and reconstruction
 % adopted from Warland, Reinagel & Meister, 1997, "Decoding visual information from a population of retinal ganglion cells"
 %   stimFrames: 2 x T array of motion steps in x- and y-direction
