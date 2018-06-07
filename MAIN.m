@@ -14,7 +14,7 @@ filterLen = ceil(filterWindow*samplingRate);
 filterLen2 = ceil(2*samplingRate);
 
 % parameters for nonlinearity
-nBins = 25;
+nBins = 15;
 NLfitType = 'u';
 tbin = 1/samplingRate;
 
