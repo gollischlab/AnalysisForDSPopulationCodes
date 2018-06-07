@@ -34,7 +34,7 @@ end
 
 % stimulus reconstruction and mutual information (Fig. 1)
 [reconstrFrames, reconstrStimBins, populationFilter] = getLinearPopulationReadout(spikeCounts, stimFrames, filterLen);
-[totalInfo, infoDensity, stimDensity, reconstrDensity, errorDensity] = calcMutualInformation(stimFrames(:, reconstrStimBins), reconstrFrames, filterLen);
+[totalInfo, freqBins, infoDensity, stimDensity, reconstrDensity, errorDensity] = calcMutualInformation(stimFrames(:, reconstrStimBins), reconstrFrames, filterLen, tbin);
 
 % cell filters and nonlinearities (Fig. 5)
 filters = zeros(nCells, nDims*filterLen);
@@ -55,7 +55,7 @@ for cellIdx = 1:nCells
     [simNLrates(cellIdx, :), simNLbins(cellIdx, :)] = getNL(PoissonSpikeCounts(cellIdx, :), stimFrames(1, :), simFilters(cellIdx, :), tbin, nBins);
 end
 [simReconstrFrames, simReconstrStimBins, simPopulationFilter] = getLinearPopulationReadout(PoissonSpikeCounts, stimFrames(1, :), filterLen);
-[simTotalInfo, simInfoDensity, simStimDensity, simReconstrDensity, simErrorDensity] = calcMutualInformation(stimFrames(1, simReconstrStimBins), simReconstrFrames, filterLen);
+[simTotalInfo, freqBins, simInfoDensity, simStimDensity, simReconstrDensity, simErrorDensity] = calcMutualInformation(stimFrames(1, simReconstrStimBins), simReconstrFrames, filterLen, tbin);
 
 % canonical correlation analysis (Fig. 7)
 [respComp, stimComp, corrCoeff] = getCCAcomponents(spikeCounts, stimFrames, filterLen2);
