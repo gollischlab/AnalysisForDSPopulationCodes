@@ -31,7 +31,7 @@ Functions:
 -----------
 [reconstrFrames, reconstrStimBins, filter] = getLinearPopulationReadout(spikeCounts, stimFrames, filterLen)
 
-[totalInfo, infoDensity, stimDensity, reconstrDensity, errorDensity] = calcMutualInformation(stimFrames, reconstrFrames, filterLen)
+[totalInfo, freqBins, infoDensity, stimDensity, reconstrDensity, errorDensity] = calcMutualInformation(stimFrames, reconstrFrames, filterLen, tbin)
 
 filter = getFilter(spikeCounts, stimFrames, filterLen)
 
