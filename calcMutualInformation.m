@@ -22,7 +22,7 @@ for k = 1:nSegments
 end
 
 % take average across segments
-stimDensity = squeeze(mean(power(abs(stimFFT(:, :, 1:NFFT/2+1))/NFFT, 2), 2)));
+stimDensity = squeeze(mean(power(abs(stimFFT(:, :, 1:NFFT/2+1))/NFFT, 2), 2));
 reconstrDensity = squeeze(mean(power(abs(reconstrFFT(:, :, 1:NFFT/2+1))/NFFT, 2), 2));
 errorDensity = squeeze(mean(power(abs(errorFFT(:, :, 1:NFFT/2+1))/NFFT, 2), 2));
 
