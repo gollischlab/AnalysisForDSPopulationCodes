@@ -145,10 +145,13 @@ xlabel('Components');
 
 %% plot stimulus reconstruction and Gaussian smoothed stimulus
 figure;
-subplot(2, 2, 1);
-plot(0:tbin:2*filterWindow-tbin, populationFilter, 'linewidth', 1.5);
+subplot(2, 4, 1);
+plot(0:tbin:filterWindow-tbin, reshape(populationFilter(2:end, 1), [], 2), 'linewidth', 1.5);
 legend('cell 1', 'cell 2');
-title('Population filter');
+title('Population filter - x-dir.');
+subplot(2, 4, 2);
+plot(0:tbin:filterWindow-tbin, reshape(populationFilter(2:end, 2), [], 2), 'linewidth', 1.5);
+title('y-dir.');
 
 subplot(2, 2, 2);
 plot(linspace(0, samplingRate/2, size(infoDensity, 2)), sum(infoDensity, 1), 'k', 'linewidth', 1.5);
@@ -171,7 +174,7 @@ ylabel('Motion steps (x-dir.)');
 %% plot stimulus reconstruction from simulated responses and Gaussian smoothed stimulus
 figure;
 subplot(2, 2, 1);
-plot(0:tbin:filterWindow-tbin, reshape(simPopulationFilter, [], 2), 'linewidth', 1.5);
+plot(0:tbin:filterWindow-tbin, reshape(simPopulationFilter(2:end), [], 2), 'linewidth', 1.5);
 legend('cell 1', 'cell 2');
 title('Population filter - simulated data');
 
