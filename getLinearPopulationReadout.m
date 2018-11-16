@@ -9,7 +9,7 @@ trainFrac = 0.7; % fraction used for training the decoder
 nCells = size(spikeCounts, 1);
 nDims = size(stimFrames, 1);
 stimLen = size(spikeCounts, 2);
-totalFilterLen = filterLen*nCells;
+totalFilterLen = filterLen*nCells+1;
 
 % assign training and test bins
 trainBins = 1:floor(stimLen*trainFrac);
@@ -27,10 +27,10 @@ testResp = spikeCounts(:, testBins);
 trainR = zeros(trainLen, totalFilterLen);
 testR = zeros(testLen, totalFilterLen);
 for k = 1:trainLen
-	trainR(k, :) = reshape(trainResp(:, k:k+filterLen-1)', 1, []);
+	trainR(k, :) = [1, reshape(trainResp(:, k:k+filterLen-1)', 1, [])];
 end
 for k = 1:testLen
-    testR(k, :) = reshape(testResp(:, k:k+filterLen-1)', 1, []);
+    testR(k, :) = [1, reshape(testResp(:, k:k+filterLen-1)', 1, [])];
 end
 
 % calculate filter and reconstruction
